@@ -19,7 +19,7 @@ span {
 }
 
 .value {
-    font-size: 90px;
+    font-size: 190px;
     background-color: #3C3D3C;
     color: #F8F5F5;
     border-radius: 10px;
@@ -27,6 +27,6 @@ span {
 }
 
 .label {
-    font-size: 20px;
+    font-size: 30px;
     color: #B7C7D9;
 }
