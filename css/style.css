@@ -1,0 +1,32 @@
+body {
+    background-color: #F1F2F1;
+}
+
+
+.timer {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+span {
+    display: block;
+}
+
+.field {
+    text-align: center;
+    margin-right: 50px;
+}
+
+.value {
+    font-size: 90px;
+    background-color: #3C3D3C;
+    color: #F8F5F5;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.label {
+    font-size: 20px;
+    color: #B7C7D9;
+}
