@@ -1,15 +1,11 @@
-const refs = {
-    days: document.querySelector('[data-value="days"]'),
-    hours: document.querySelector('[data-value="hours"]'),
-    mins: document.querySelector('[data-value="mins"]'),
-    secs: document.querySelector('[data-value="secs"]'),
-}
-
-class CountdownTimer {
-    constructor({ selector, targetDate, onTick }) {
+export default class CountdownTimer {
+    constructor({ rootSelector, daysAtribute, hoursAtribute, minsAtribute, secsAtribute, targetDate }) {
         this.intervalId = null;
-        this.onTick = onTick;
-        this.selector = selector;
+        this.rootSelector = rootSelector;
+        this.daysAtribute = daysAtribute;
+        this.hoursAtribute = hoursAtribute;
+        this.minsAtribute = minsAtribute;
+        this.secsAtribute = secsAtribute;
         this.targetDate = targetDate;
         this.start();
     }
@@ -19,7 +15,7 @@ class CountdownTimer {
             const currentTime = Date.now();
             const deltaTime = this.targetDate - currentTime;
             const time = this.getTimeComponents(deltaTime);
-            this.onTick(time);
+            this.updateClockface(time);
         }, 1000);
         
     }
@@ -35,17 +31,12 @@ class CountdownTimer {
     pad(value) {
     return String(value).padStart(2, '0');
     }
-}
 
-const countdownTimer = new CountdownTimer({
-    selector: '#timer-1',
-    targetDate: new Date('Dec 17, 2020'),
-    onTick: updateClockface,
-});
-
-function updateClockface({ days, hours, mins, secs }) {
-    refs.days.textContent = `${days}`;
-    refs.hours.textContent = `${hours}`;
-    refs.mins.textContent = `${mins}`;
-    refs.secs.textContent = `${secs}`;
+    updateClockface({ days, hours, mins, secs }) {
+        const root = document.querySelector(this.rootSelector);
+        root.querySelector(this.daysAtribute).textContent = `${days}`;
+        root.querySelector(this.hoursAtribute).textContent = `${hours}`;
+        root.querySelector( this.minsAtribute).textContent = `${mins}`;
+        root.querySelector(this.secsAtribute).textContent = `${secs}`;
+    }
 }
